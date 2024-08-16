@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플라스크팜 취급품목 안내</title>
+    <style>
+        @font-face {
+            font-family: 'BMHANNAAir';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'BMHANNAAir', 'Arial', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            font-size: 20px;
+        }
+        h1, h2, h3 {
+            color: #000;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 32px;
+        }
+        h2 {
+            font-size: 28px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .section {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid #000;
+        }
+        #copy-button, #instagram-button, #font-size-control {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+        #copy-button {
+            background-color: #444;
+        }
+        #copy-button:hover {
+            background-color: #222;
+        }
+        #instagram-button {
+            background-color: #666;
+        }
+        #instagram-button:hover {
+            background-color: #444;
+        }
+        #font-size-control {
+            background-color: #888;
+        }
+        #font-size-control:hover {
+            background-color: #666;
+        }
+        #notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            font-size: 18px;
+        }
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .summary-item {
+            margin-bottom: 15px;
+        }
+        .fruit-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .fruit-item {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>플라스크팜 취급품목 안내</h1>
+
+    <div class="button-container">
+        <button id="copy-button">취급 품목 정보 복사하기</button>
+        <a id="instagram-button" href="https://www.instagram.com/flask.farm" target="_blank">인스타그램 방문하기</a>
+        <button id="font-size-control">글씨 크기 조절</button>
+    </div>
+
+    <div id="notification">클립보드에 복사되었습니다!</div>
+
+    <div class="section">
+        <h2>취급 품목</h2>
+
+        <h3>국내산 제철 과일</h3>
+        <div class="fruit-list">
+            <div class="fruit-item">복숭아 🍑 (6월~8월)</div>
+            <div class="fruit-item">수박 🍉 (6월~9월)</div>
+            <div class="fruit-item">사과 🍎 (가을, 1년 내내)</div>
+            <div class="fruit-item">배 🚣 (가을, 겨울)</div>
+            <div class="fruit-item">토마토 🍅 (1년 내내)</div>
+            <div class="fruit-item">방울토마토 🍒 (1년 내내)</div>
+            <div class="fruit-item">딸기 🍓 (10월~4월)</div>
+            <div class="fruit-item">귤 🍊 (가을, 겨울)</div>
+        </div>
+
+        <h3>수입 과일</h3>
+        <div class="fruit-list">
+            <div class="fruit-item">망고 🥭</div>
+            <div class="fruit-item">파인애플 🍍</div>
+            <div class="fruit-item">레몬 🍋</div>
+            <div class="fruit-item">자몽 🍊</div>
+            <div class="fruit-item">바나나 🍌</div>
+            <div class="fruit-item">키위 🥝</div>
+        </div>
+
+        <h3>기타 농산물</h3>
+        <div class="fruit-list">
+            <div class="fruit-item">고구마 🍠</div>
+            <div class="fruit-item">감자 🥔</div>
+            <div class="fruit-item">표고 버섯 🍄</div>
+            <div class="fruit-item">배추 🥬 (직접 재배)</div>
+        </div>
+
+        <h3>화훼</h3>
+        <div class="fruit-list">
+            <div class="fruit-item">몬스테라 🌿</div>
+            <div class="fruit-item">해바라기 🌻</div>
+            <div class="fruit-item">화칠 나무 🌴</div>
+            <div class="fruit-item">여우꼬리나무 🦊</div>
+            <div class="fruit-item">분갈이 🪴</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>주문 안내</h2>
+        <div class="summary-item">
+            <p>- 주문 시간: 전날 밤 9시까지</p>
+            <p>- 주문 방법: 문자, 인스타그램 DM, 전화</p>
+            <p>- 답변 시간: 주문 후 2-3시간 이내</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>가격 정책 및 품질 관리</h2>
+        <div class="summary-item">
+            <h3>가격 정책</h3>
+            <p>- 매일 경매가에 따라 변동</p>
+            <p>- 마트나 쿠팡보다 저렴하거나 품질이 우수한 경우에만 판매</p>
+        </div>
+        <div class="summary-item">
+            <h3>품질 관리</h3>
+            <p>- 당도 등 품질 꼼꼼히 체크 후 납품</p>
+            <p>- 고객 만족 시에만 판매 진행</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>배송 안내</h2>
+        <div class="summary-item">
+            <p>- 배송 지역: 홍대, 압구정, 위례</p>
+            <p>- 배송 시간: 새벽 또는 오전</p>
+            <p>- 배송 방법: 가게 문 앞 직접 배송</p>
+            <p>- 교환 및 환불: 당일 검수 후 문제 발견 시 교환 가능. 교환 어려운 경우 환불 가능</p>
+        </div>
+    </div>
+
+    <script>
+        const copyButton = document.getElementById('copy-button');
+        const notification = document.getElementById('notification');
+        const fontSizeControl = document.getElementById('font-size-control');
+        let currentFontSize = 20;
+
+        copyButton.addEventListener('click', () => {
+            const content = Array.from(document.querySelectorAll('.section')).map(section => {
+                return section.innerText;
+            }).join('\n\n');
+            
+            const textArea = document.createElement('textarea');
+            textArea.value = content;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        });
+
+        fontSizeControl.addEventListener('click', () => {
+            currentFontSize += 2;
+            if (currentFontSize > 28) {
+                currentFontSize = 20;
+            }
+            document.body.style.fontSize = `${currentFontSize}px`;
+            document.querySelectorAll('h1').forEach(el => el.style.fontSize = `${currentFontSize * 1.6}px`);
+            document.querySelectorAll('h2').forEach(el => el.style.fontSize = `${currentFontSize * 1.4}px`);
+            document.querySelectorAll('h3').forEach(el => el.style.fontSize = `${currentFontSize * 1.2}px`);
+        });
+    </script>
+</body>
+</html>
