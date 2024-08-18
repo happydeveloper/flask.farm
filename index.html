@@ -108,6 +108,23 @@
             padding: 10px;
             border-radius: 5px;
         }
+
+        /* ... (이전 스타일은 그대로 유지) ... */
+        #copy-account-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #666;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #copy-account-button:hover {
+            background-color: #444;
+        }
     </style>
 </head>
 <body>
@@ -128,8 +145,9 @@
 
         <h3>국내산 제철 과일</h3>
         <div class="fruit-list">
-            <div class="fruit-item">복숭아 🍑 (6월~8월) 5KG, 특등급, 햇사레 35,000</div>
-            <div class="fruit-item">수박 🍉 (6월~9월)</div>
+            <div class="fruit-item">복숭아 🍑 (6월~8월) 4KG, 특등급, 햇사레 25,000</div>
+            <div class="fruit-item">수박 🍉 (6월~8월)</div>
+            <div class="fruit-item">자두 🍉 (6월~9월)</div>
             <div class="fruit-item">딸기 🍓 (10월~4월)</div>
             <div class="fruit-item">사과 🍎 (가을, 겨울)</div>
             <div class="fruit-item">배 🚣 (가을, 겨울)</div>
@@ -176,6 +194,14 @@
     </div>
 
     <div class="section">
+        <h2>계좌 번호 안내</h2>
+        <div class="summary-item">
+            <p>농협은행 3021403812551 두루옵스</p>
+            <button id="copy-account-button">계좌번호 복사</button>
+        </div>
+    </div>
+
+    <div class="section">
         <h2>가격 정책 및 품질 관리</h2>
         <div class="summary-item">
             <h3>가격 정책</h3>
@@ -201,26 +227,41 @@
 
     <script>
         const copyButton = document.getElementById('copy-button');
+        const copyAccountButton = document.getElementById('copy-account-button');
         const notification = document.getElementById('notification');
         const fontSizeControl = document.getElementById('font-size-control');
         let currentFontSize = 20;
+
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        function copyToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+        }
 
         copyButton.addEventListener('click', () => {
             const content = Array.from(document.querySelectorAll('.section')).map(section => {
                 return section.innerText;
             }).join('\n\n');
             
-            const textArea = document.createElement('textarea');
-            textArea.value = content;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
+            copyToClipboard(content);
+            showNotification('모든 정보가 클립보드에 복사되었습니다!');
+        });
 
-            notification.style.display = 'block';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
+        copyAccountButton.addEventListener('click', () => {
+            const accountInfo = "농협은행 3021403812551 두루옵스";
+            copyToClipboard(accountInfo);
+            showNotification('계좌번호가 클립보드에 복사되었습니다!');
         });
 
         fontSizeControl.addEventListener('click', () => {
